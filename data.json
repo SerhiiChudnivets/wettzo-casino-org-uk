@@ -243,31 +243,31 @@
   "footer_menu": [
     {
       "link": "/play/",
+      "label": " Responsible Gaming",
+      "submenu": [],
+      "openInNewTab": false
+    },
+    {
+      "link": "/play/",
+      "label": "Terms & Conditions",
+      "submenu": [],
+      "openInNewTab": false
+    },
+    {
+      "link": "/play/",
+      "label": "Cookies Policy",
+      "submenu": [],
+      "openInNewTab": false
+    },
+    {
+      "link": "/play/",
+      "label": "Privacy Policy",
+      "submenu": [],
+      "openInNewTab": false
+    },
+    {
+      "link": "/play/",
       "label": "About Us",
-      "submenu": [],
-      "openInNewTab": false
-    },
-    {
-      "link": "/play/",
-      "label": "Affiliate Program",
-      "submenu": [],
-      "openInNewTab": false
-    },
-    {
-      "link": "/play/",
-      "label": "Contact Us",
-      "submenu": [],
-      "openInNewTab": false
-    },
-    {
-      "link": "/play/",
-      "label": "Privacy Policy and Security",
-      "submenu": [],
-      "openInNewTab": false
-    },
-    {
-      "link": "/play/",
-      "label": "Responsible Gaming",
       "submenu": [],
       "openInNewTab": false
     }
@@ -279,29 +279,9 @@
       "image_alt": "18+"
     },
     {
-      "link": "https://responsiblegambling.org/",
-      "image": "/uploads/0b535bc7edadb208aa9a48d4388718df.svg",
-      "image_alt": "responsible gaming"
-    },
-    {
-      "link": "/play/",
-      "image": "/uploads/657303d64f52b7d3416483142b9b416c.svg",
-      "image_alt": "skrill"
-    },
-    {
-      "link": "/play/",
-      "image": "/uploads/d02c7ab1de33229c4bd5f40fb84c2ba5.svg",
-      "image_alt": "maestro"
-    },
-    {
-      "link": "/play/",
-      "image": "/uploads/767309a1bb8da0f68e987f277a6ebbf1.webp",
-      "image_alt": "bitcoin"
-    },
-    {
-      "link": "/play/",
-      "image": "/uploads/6e4898443d8c7a6d3f85c8c699adf4b8.svg",
-      "image_alt": "visa"
+      "link": "https://www.gamcare.org.uk/",
+      "image": "/uploads/1bfe3b454cda5ccf482e868ba2dfdc15.webp",
+      "image_alt": "gamcare"
     }
   ],
   "Slots": [
@@ -387,10 +367,10 @@
       "question": "What is the minimum withdrawal limit at Wettzo Casino?"
     }
   ],
-  "_generated_at": "2026-10-05T11:20:51.860Z",
+  "_generated_at": "2026-10-05T11:26:01.558Z",
   "_version": "1.0.0",
   "html_head_alt": "wettzo baner",
   "content_alt": "wettzo register",
-  "_last_deploy": "2026-10-05T11:20:52.447Z",
-  "_deploy_trigger": "agsa7"
+  "_last_deploy": "2026-10-05T11:26:02.170Z",
+  "_deploy_trigger": "9ri4hu"
 }
