@@ -190,12 +190,12 @@
   "accent_color": "#d4af37",
   "main_background": "#0a1019",
   "secondary_background": "#1c2b40",
-  "button_background": "#dcb15b",
+  "button_background": "#2c74a7",
   "button_text_color": "#FFFFFF",
   "text_color": "#FFFFFF",
   "color_highlight_text": "#FFFFFF",
   "color_main_btn_text": "#1b1919",
-  "cta_background": "#2c74a7",
+  "cta_background": "#dcb15b",
   "logo": {
     "url": "/uploads/3eaff9c418b9737bde0348971e1fbac3.svg",
     "alt": "wettzo logo"
@@ -387,10 +387,10 @@
       "question": "What is the minimum withdrawal limit at Wettzo Casino?"
     }
   ],
-  "_generated_at": "2026-10-05T10:53:43.927Z",
+  "_generated_at": "2026-10-05T11:20:51.860Z",
   "_version": "1.0.0",
   "html_head_alt": "wettzo baner",
   "content_alt": "wettzo register",
-  "_last_deploy": "2026-10-05T10:53:48.113Z",
-  "_deploy_trigger": "a7ddxy"
+  "_last_deploy": "2026-10-05T11:20:52.447Z",
+  "_deploy_trigger": "agsa7"
 }
