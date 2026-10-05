@@ -23,7 +23,7 @@
       "heroTitle": "Wettzo Casino",
       "heroSubtitle": "Welcome Bonus",
       "heroBadge": "Wettzo Casino — Register and Play",
-      "ctaText": "Claim Bonus",
+      "ctaText": "Play Now",
       "tagline": "100%  up to £250 + 40 Free Spins",
       "heroImage": "/uploads/6a673752346eeb778ea030d2cf8f9d71.webp",
       "template": "homepage",
@@ -112,7 +112,7 @@
       "html_head": "<link rel=\"canonical\" href=\"https://wettzo-casino.org.uk/en-gb/\">\n<link rel=\"alternate\" href=\"https://wettzo-casino.org.uk/\" hreflang=\"en\">\n<link rel=\"alternate\" href=\"https://wettzo-casino.org.uk/en-gb/\" hreflang=\"en-GB\">\n<meta property=\"og:locale\" content=\"en_GB\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:title\" content=\"Wettzo Casino – Play Now & Get Exclusive Bonus\">\n<meta property=\"og:description\" content=\"At Wettzo Casino, unlock a multi-tier welcome package complete with bonus boosts and extra free spins. Explore our dynamic promotions, regular reload offers, and exclusive VIP rewards today.\">\n<meta property=\"og:url\" content=\"wettzo-casino.org.uk\">\n<meta property=\"og:site_name\" content=\"Wettzo Casino\">\n<meta property=\"og:image\" content=\"https://wettzo-casino.org.uk//uploads/6a673752346eeb778ea030d2cf8f9d71.webp\">",
       "faq_title": "FAQ",
       "hero_badge": "Wettzo Casino — Register and Play",
-      "cta_text": "Claim Bonus",
+      "cta_text": "Play Now",
       "content_alt": "wettzo register",
       "htmlHead_alt": "wettzo baner",
       "heroImage_alt": "wettzo baner",
@@ -173,7 +173,7 @@
   "hero_title": "Wettzo Casino",
   "hero_subtitle": "Welcome Bonus",
   "hero_badge": "Wettzo Casino — Register and Play",
-  "cta_text": "Claim Bonus",
+  "cta_text": "Play Now",
   "tagline": "100%  up to £250 + 40 Free Spins",
   "features_list": null,
   "footer_text": "© 2026. Wettzo Casino. All rights reserved",
@@ -183,7 +183,7 @@
   "register_text": "Sign Up",
   "slots_title": "Top Online Slots at Wettzo Casino",
   "bonus_title": "Wettzo Casino — Welcome Package & Weekly Reload",
-  "get_bonus_btn_text": "Get Bonus",
+  "get_bonus_btn_text": "Claim Bonus",
   "redirect_link": "/play/",
   "home_name": "Pandazino",
   "subdomains": null,
@@ -367,10 +367,10 @@
       "question": "What is the minimum withdrawal limit at Wettzo Casino?"
     }
   ],
-  "_generated_at": "2026-10-05T11:26:01.558Z",
+  "_generated_at": "2026-10-05T11:26:54.630Z",
   "_version": "1.0.0",
   "html_head_alt": "wettzo baner",
   "content_alt": "wettzo register",
-  "_last_deploy": "2026-10-05T11:26:02.170Z",
-  "_deploy_trigger": "9ri4hu"
+  "_last_deploy": "2026-10-05T11:26:55.165Z",
+  "_deploy_trigger": "s678ft"
 }
