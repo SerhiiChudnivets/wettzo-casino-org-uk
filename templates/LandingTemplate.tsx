@@ -62,6 +62,7 @@ interface PageData {
   features_list?: string
   footer_text?: string
   popup_text?: string
+  popupText?: string
   faq_title?:string
   login_text?: string
   register_text?: string
@@ -135,6 +136,7 @@ interface SiteData {
   features_list?: string
   footer_text?: string
   popup_text?: string
+  popupText?: string
   faq_title?:string
   login_text?: string
   register_text?: string
@@ -1419,7 +1421,9 @@ export default function LandingTemplate({ page, site }: { page: PageData; site: 
   const [showPopup, setShowPopup] = useState(false)
   const [isPopupDismissed, setIsPopupDismissed] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const popupText = data.popup_text || '🎁 Welcome Bonus: 100% up to $500 + 200 Free Spins!'
+  const pagePopupText = [page.popupText, page.popup_text].find((value) => typeof value === 'string' && value.trim())
+  const dataPopupText = [data.popupText, data.popup_text].find((value) => typeof value === 'string' && value.trim())
+  const popupText = pagePopupText || dataPopupText || '🎁 Welcome Bonus: 100% up to $500 + 200 Free Spins!'
   // New variable
   const normalizeUrl = (url?: string) => {
     if (!url) return '#'

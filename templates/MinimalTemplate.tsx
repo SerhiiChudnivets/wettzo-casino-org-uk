@@ -68,6 +68,7 @@ interface PageData {
   footerImages?: FooterImage[]
   popup_logo?: any
   popup_text?: string
+  popupText?: string
   get_bonus_btn_text?: string
   logo?: any
   [key: string]: any
@@ -108,6 +109,7 @@ interface SiteData {
   footerImages?: FooterImage[]
   popup_logo?: any
   popup_text?: string
+  popupText?: string
   get_bonus_btn_text?: string
   html_head?: string
   htmlHead?: string
@@ -567,7 +569,9 @@ export default function MinimalTemplate({ page, site }: { page: PageData; site: 
   const backgroundImage = getMediaUrl(page.heroImage || page.hero_image || site.heroImage || site.hero_image || site.main_background_img)
   const popupLogoSource = page.popup_logo || site.popup_logo
   const popupLogo = getMediaUrl(popupLogoSource)
-  const popupText = page.popup_text || site.popup_text || page.tagline || site.tagline || ''
+  const pagePopupText = [page.popupText, page.popup_text].find((value) => typeof value === 'string' && value.trim())
+  const sitePopupText = [site.popupText, site.popup_text].find((value) => typeof value === 'string' && value.trim())
+  const popupText = pagePopupText || sitePopupText || page.tagline || site.tagline || ''
   const popupButtonText = page.get_bonus_btn_text || site.get_bonus_btn_text || ctaText
   const footerImagesSource = Array.isArray(page.footer_images) && page.footer_images.length > 0
     ? page.footer_images

@@ -1,5 +1,5 @@
 {
-  "name": "Wettzo Casino",
+  "name": "wettzo-casino.org.uk",
   "site_name": "Wettzo Casino – Play Now & Get Exclusive Bonus ",
   "html_head": "<link rel=\"canonical\" href=\"https://wettzo-casino.org.uk/en-gb/\">\n<link rel=\"alternate\" href=\"https://wettzo-casino.org.uk/\" hreflang=\"en\">\n<link rel=\"alternate\" href=\"https://wettzo-casino.org.uk/en-gb/\" hreflang=\"en-GB\">\n<meta property=\"og:locale\" content=\"en_GB\">\n<meta property=\"og:type\" content=\"website\">\n<meta property=\"og:title\" content=\"Wettzo Casino – Play Now & Get Exclusive Bonus\">\n<meta property=\"og:description\" content=\"At Wettzo Casino, unlock a multi-tier welcome package complete with bonus boosts and extra free spins. Explore our dynamic promotions, regular reload offers, and exclusive VIP rewards today.\">\n<meta property=\"og:url\" content=\"wettzo-casino.org.uk\">\n<meta property=\"og:site_name\" content=\"Wettzo Casino\">\n<meta property=\"og:image\" content=\"https://wettzo-casino.org.uk//uploads/6a673752346eeb778ea030d2cf8f9d71.webp\">",
   "url": "wettzo-casino.org.uk",
@@ -367,10 +367,10 @@
       "question": "What is the minimum withdrawal limit at Wettzo Casino?"
     }
   ],
-  "_generated_at": "2026-10-05T15:36:17.482Z",
+  "_generated_at": "2026-10-06T13:08:54.862Z",
   "_version": "1.0.0",
   "html_head_alt": "wettzo baner",
   "content_alt": "wettzo register",
-  "_last_deploy": "2026-10-05T15:36:18.119Z",
-  "_deploy_trigger": "7rte0p"
+  "_last_deploy": "2026-10-06T13:08:55.440Z",
+  "_deploy_trigger": "6ez9bl"
 }

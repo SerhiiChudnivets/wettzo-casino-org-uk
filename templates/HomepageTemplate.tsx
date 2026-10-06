@@ -116,6 +116,7 @@ interface SiteData {
   tagline?: string
   features_list?: string
   popup_text?: string
+  popupText?: string
   faq_title?: string
   faqTitle?: string
   slots_title?: string
@@ -730,7 +731,9 @@ export default function HomepageTemplate({ page, site }: { page: PageData; site:
   const heroBadge = typeof pageHeroBadge === 'string' ? pageHeroBadge.trim() : ''
   const ctaText = page.ctaText || page.cta_text || site.ctaText || site.cta_text || 'Play Now'
   const tagline = page.tagline || site.tagline || 'Start your winning journey today with the best welcome offer in online gaming!'
-  const popupText = page.popup_text || site.popup_text || 'Welcome Bonus: 100% up to $500 + 200 Free Spins!'
+  const pagePopupText = [page.popupText, page.popup_text].find((value) => typeof value === 'string' && value.trim())
+  const sitePopupText = [site.popupText, site.popup_text].find((value) => typeof value === 'string' && value.trim())
+  const popupText = pagePopupText || sitePopupText || 'Welcome Bonus: 100% up to $500 + 200 Free Spins!'
 
   const normalizeUrl = (url?: string) => {
     if (!url) return '#'

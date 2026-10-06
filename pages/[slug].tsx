@@ -152,6 +152,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     seo_description: data.seo_description,
     seoDescription: data.seoDescription,
     popup_text: data.popup_text,
+    popupText: data.popupText,
     faq_title: data.faq_title,
     faqTitle: data.faqTitle,
     faq: data.faq,
