@@ -185,7 +185,7 @@
   "bonus_title": "Wettzo Casino — Welcome Package & Weekly Reload",
   "get_bonus_btn_text": "Claim Bonus",
   "redirect_link": "/play/",
-  "home_name": "Pandazino",
+  "home_name": "Wettzo Casino",
   "subdomains": null,
   "accent_color": "#d4af37",
   "main_background": "#0a1019",
@@ -367,10 +367,10 @@
       "question": "What is the minimum withdrawal limit at Wettzo Casino?"
     }
   ],
-  "_generated_at": "2026-10-06T13:08:54.862Z",
+  "_generated_at": "2026-10-06T13:12:04.785Z",
   "_version": "1.0.0",
   "html_head_alt": "wettzo baner",
   "content_alt": "wettzo register",
-  "_last_deploy": "2026-10-06T13:08:55.440Z",
-  "_deploy_trigger": "6ez9bl"
+  "_last_deploy": "2026-10-06T13:12:05.543Z",
+  "_deploy_trigger": "gurwe"
 }
