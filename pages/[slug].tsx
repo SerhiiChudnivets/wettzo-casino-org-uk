@@ -169,6 +169,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     color_highlight_text: data.color_highlight_text,
     color_main_btn_text: data.color_main_btn_text,
     Slots: data.Slots,
+    slots: data.slots,
     Bonuses: data.Bonuses,
     main_background_img: data.main_background_img,
     popup_logo: data.popup_logo,

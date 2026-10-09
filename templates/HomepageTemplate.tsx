@@ -131,6 +131,7 @@ interface SiteData {
   color_highlight_text?: string
   color_main_btn_text?: string
   Slots?: Slot[]
+  slots?: Slot[]
   Bonuses?: Bonus[]
   bonuses?: Bonus[]
   main_background_img?: any
@@ -685,11 +686,13 @@ export default function HomepageTemplate({ page, site }: { page: PageData; site:
         const metaName = typeof attrs.name === 'string' ? attrs.name.toLowerCase() : ''
         const metaProperty = typeof attrs.property === 'string' ? attrs.property.toLowerCase() : ''
         const metaHttpEquiv = typeof attrs.httpEquiv === 'string' ? attrs.httpEquiv.toLowerCase() : ''
+        const metaContent = typeof attrs.content === 'string' ? attrs.content.toLowerCase() : ''
         const metaKey = metaName || metaProperty || metaHttpEquiv || (attrs.charSet ? 'charset' : '')
+        const metaDedupKey = metaKey ? `meta:${metaKey}:${metaContent}` : `meta:${key}`
         if (metaName === 'description') continue
-        if (metaKey && seenHeadTags.has(`meta:${metaKey}`)) continue
-        if (metaKey) seenHeadTags.add(`meta:${metaKey}`)
-        tags.push(<meta key={metaKey ? `meta:${metaKey}` : key} {...attrs} />)
+        if (seenHeadTags.has(metaDedupKey)) continue
+        seenHeadTags.add(metaDedupKey)
+        tags.push(<meta key={metaDedupKey} {...attrs} />)
       }
 
       if (tagName === 'link') {
@@ -804,7 +807,9 @@ export default function HomepageTemplate({ page, site }: { page: PageData; site:
     pageSlots = page.slots
   }
 
-  const siteSlots = Array.isArray(site.Slots) ? site.Slots : []
+  const siteSlots = Array.isArray(site.Slots) && site.Slots.length > 0
+    ? site.Slots
+    : Array.isArray(site.slots) ? site.slots : []
   const slots = pageSlots.length > 0 ? pageSlots : siteSlots
 
   let pageBonuses: Bonus[] = []
@@ -869,6 +874,12 @@ export default function HomepageTemplate({ page, site }: { page: PageData; site:
     if (typeof media === 'string') return fallback
     if (Array.isArray(media)) return getMediaAlt(media[0], fallback)
     return media.alt || media.alternativeText || media.name || fallback
+  }
+
+  const getSlotDisplayName = (slot: Slot, fallbackIndex: number) => {
+    const rawName = slot.logo_alt || slot.Name || slot.name || `Slot ${fallbackIndex + 1}`
+    const trimmedName = rawName.trim()
+    return trimmedName ? `${trimmedName.charAt(0).toUpperCase()}${trimmedName.slice(1)}` : `Slot ${fallbackIndex + 1}`
   }
 
   const footerImagesSource = Array.isArray(page.footer_images) && page.footer_images.length > 0
@@ -1066,11 +1077,13 @@ export default function HomepageTemplate({ page, site }: { page: PageData; site:
                 </button>
                 <div className="slots-grid">
                   {slots.slice(slotStartIndex, slotStartIndex + visibleSlots).map((slot, index) => {
+                    const slotIndex = slotStartIndex + index
                     const logoUrl = getLogoUrl(slot)
+                    const slotName = getSlotDisplayName(slot, slotIndex)
                     return (
                       <div key={slot.id || index} className="slot-card">
                         {logoUrl ? (
-                          <img src={logoUrl} alt={slot.logo_alt || getMediaAlt(slot.logo, slot.Name || slot.name || `Slot ${index + 1}`)} className="slot-image" />
+                          <img src={logoUrl} alt={slot.logo_alt || getMediaAlt(slot.logo, slotName)} className="slot-image" />
                         ) : (
                           <div className="slot-image" style={{ background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem' }}>
                             {'\uD83C\uDFB0'}
@@ -1078,7 +1091,7 @@ export default function HomepageTemplate({ page, site }: { page: PageData; site:
                         )}
                         <div className="slot-overlay">
                           <div className="slot-background">
-                            <span className="slot-name">{slot.Name || `Slot ${index + 1}`}</span>
+                            <span className="slot-name">{slotName}</span>
                             <button className="btn btn-primary" onClick={() => slot.link && (window.location.href = slot.link)}>Play</button>
                           </div>
                         </div>

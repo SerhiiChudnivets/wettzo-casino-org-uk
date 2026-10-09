@@ -1372,11 +1372,13 @@ export default function LandingTemplate({ page, site }: { page: PageData; site: 
         const metaName = typeof attrs.name === 'string' ? attrs.name.toLowerCase() : ''
         const metaProperty = typeof attrs.property === 'string' ? attrs.property.toLowerCase() : ''
         const metaHttpEquiv = typeof attrs.httpEquiv === 'string' ? attrs.httpEquiv.toLowerCase() : ''
+        const metaContent = typeof attrs.content === 'string' ? attrs.content.toLowerCase() : ''
         const metaKey = metaName || metaProperty || metaHttpEquiv || (attrs.charSet ? 'charset' : '')
+        const metaDedupKey = metaKey ? `meta:${metaKey}:${metaContent}` : `meta:${key}`
         if (metaName === 'description') continue
-        if (metaKey && seenHeadTags.has(`meta:${metaKey}`)) continue
-        if (metaKey) seenHeadTags.add(`meta:${metaKey}`)
-        tags.push(<meta key={metaKey ? `meta:${metaKey}` : key} {...attrs} />)
+        if (seenHeadTags.has(metaDedupKey)) continue
+        seenHeadTags.add(metaDedupKey)
+        tags.push(<meta key={metaDedupKey} {...attrs} />)
       }
 
       if (tagName === 'link') {

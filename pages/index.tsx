@@ -113,6 +113,7 @@ interface CasinoData {
   
   // Repeatable components
   Slots?: Slot[]
+  slots?: Slot[]
   Bonuses?: Bonus[]
   bonuses?: Bonus[]
   header_menu?: MenuItem[]
@@ -1352,7 +1353,9 @@ export default function TupchiyTemplate() {
   `;
 
   // Mock slots data if not provided
-  const slots = data.Slots && data.Slots.length > 0 ? data.Slots : []
+  const slots = Array.isArray(data.Slots) && data.Slots.length > 0
+      ? data.Slots
+      : Array.isArray(data.slots) ? data.slots : []
 
   const dataBonusFallbacks = Array.isArray(data.bonuses) ? data.bonuses : []
   const bonuses = Array.isArray(data.Bonuses) && data.Bonuses.length > 0
@@ -1409,6 +1412,12 @@ export default function TupchiyTemplate() {
     if (typeof media === 'string') return fallback
     if (Array.isArray(media)) return getMediaAlt(media[0], fallback)
     return media.alt || media.alternativeText || media.name || fallback
+  }
+
+  const getSlotDisplayName = (slot: Slot, fallbackIndex: number) => {
+    const rawName = slot.logo_alt || slot.Name || slot.name || `Slot ${fallbackIndex + 1}`
+    const trimmedName = rawName.trim()
+    return trimmedName ? `${trimmedName.charAt(0).toUpperCase()}${trimmedName.slice(1)}` : `Slot ${fallbackIndex + 1}`
   }
   const footerImages = (Array.isArray(data.footer_images) ? data.footer_images : data.footerImages || [])
       .map((item, index) => ({
@@ -1626,11 +1635,13 @@ export default function TupchiyTemplate() {
 
                   <div className="slots-grid">
                     {slots.slice(slotStartIndex, slotStartIndex + visibleSlots).map((slot, index) => {
+                      const slotIndex = slotStartIndex + index
                       const logoUrl = getLogoUrl(slot)
+                      const slotName = getSlotDisplayName(slot, slotIndex)
                       return (
                           <div key={slot.id || index} className="slot-card">
                             {logoUrl ? (
-                                <img src={logoUrl} alt={slot.logo_alt || getMediaAlt(slot.logo, slot.Name || slot.name || `Slot ${index + 1}`)} className="slot-image" />
+                                <img src={logoUrl} alt={slot.logo_alt || getMediaAlt(slot.logo, slotName)} className="slot-image" />
                             ) : (
                                 <div className="slot-image" style={{ background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem' }}>
                                   🎰
@@ -1638,7 +1649,7 @@ export default function TupchiyTemplate() {
                             )}
                             <div className="slot-overlay">
                               <div className="slot-background">
-                                <span className="slot-name">{slot.Name || `Slot ${index + 1}`}</span>
+                                <span className="slot-name">{slotName}</span>
                                 <button className="btn btn-primary" onClick={() => slot.link && (window.location.href = slot.link)}>
                                   Play
                                 </button>
