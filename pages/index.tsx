@@ -445,14 +445,23 @@ const styles = `
   }
   
  .slot-background {
-    background: #00000070;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 1rem;
     gap: 1rem;
-    border-radius: 1rem;
+    text-align: center;
+}
+
+  .slot-play-btn {
+    background: transparent;
+    box-shadow: none;
+    font-size: 2.5rem;
+    line-height: 1;
+    padding: 0;
 }
 
   .section-title {
@@ -517,6 +526,7 @@ const styles = `
   }
 
   .slot-image {
+    display: block;
     width: 100%;
     aspect-ratio: 1;
     object-fit: cover;
@@ -525,7 +535,7 @@ const styles = `
   .slot-overlay {
     position: absolute;
     inset: 0;
-    background: hsla(var(--background), 0.8);
+    background: rgba(0, 0, 0, 0.7);
     opacity: 0;
     transition: opacity 0.3s;
     display: flex;
@@ -540,7 +550,7 @@ const styles = `
   }
 
   .slot-name {
-    color: var(--primary);
+    color: #fff;
     font-weight: 700;
     font-size: 1.125rem;
   }
@@ -1650,8 +1660,8 @@ export default function TupchiyTemplate() {
                             <div className="slot-overlay">
                               <div className="slot-background">
                                 <span className="slot-name">{slotName}</span>
-                                <button className="btn btn-primary" onClick={() => slot.link && (window.location.href = slot.link)}>
-                                  Play
+                                <button className="btn btn-primary slot-play-btn" aria-label="Play" onClick={() => slot.link && (window.location.href = slot.link)}>
+                                  ▶️
                                 </button>
                               </div>
                             </div>

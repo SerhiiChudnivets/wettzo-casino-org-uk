@@ -48,6 +48,7 @@ interface PageData {
   heroImage?: string | MediaFile | MediaFile[] | null
   hero_image?: string | MediaFile | MediaFile[] | null
   cta_text?: string
+  ctaText?: string
   cta_link?: string
   login_text?: string
   register_text?: string
@@ -227,6 +228,30 @@ const styles = `
   .hero-description { color: var(--muted-foreground); margin-bottom: 2rem; }
 
   .content-section { padding: 2rem 0; background: var(--background); }
+
+  .faq-section { padding: 0 0 4rem 0; background: var(--background); }
+  .faq-section .content-wrapper { line-height: unset; }
+  .faq-title { font-size: 2rem; font-weight: 700; color: var(--primary); text-align: center; }
+  .faq-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .faq-item {
+    background: var(--card); border-radius: 1.75rem; padding: 1rem; cursor: pointer;
+    box-shadow: 0 0 5px var(--primary); transition: all 0.3s ease;
+  }
+  .faq-question {
+    font-size: 1.125rem; font-weight: 700; color: var(--primary);
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; transition: background 0.3s ease;
+  }
+  .faq-question:hover { background-color: var(--secondary); }
+  .faq-answer {
+    padding: 0; color: var(--muted-foreground); line-height: 1.6;
+    height: 0; overflow: hidden; opacity: 0;
+    transition: height 0.3s ease-out, opacity 0.3s ease-out; max-height: 1000px;
+  }
+  .faq-answer.open { height: auto; opacity: 1; }
+  .faq-toggle-icon { display: flex; margin-left: 1rem; transition: transform 0.3s ease; }
+  .faq-toggle-icon svg { transition: transform 0.3s ease; }
+  .faq-toggle-icon.open { transform: rotate(180deg); }
   .content-wrapper {
     max-width: 56rem; margin: 0 auto; color: var(--foreground);
     line-height: 1.8; font-size: 1.125rem;
@@ -405,6 +430,7 @@ export default function MinimalTemplate({ page, site }: { page: PageData; site: 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [showPopup, setShowPopup] = useState(false)
   const [isPopupDismissed, setIsPopupDismissed] = useState(false)
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
 
   const getMediaUrl = (media?: MediaFile | MediaFile[] | string | null) => {
     if (!media) return ''
@@ -533,7 +559,8 @@ export default function MinimalTemplate({ page, site }: { page: PageData; site: 
   const heroSubtitle = page.heroSubtitle || page.hero_subtitle || site.heroSubtitle || site.hero_subtitle || ''
   const pageHeroBadge = Object.prototype.hasOwnProperty.call(page, 'heroBadge') ? page.heroBadge : page.hero_badge
   const heroBadge = typeof pageHeroBadge === 'string' ? pageHeroBadge.trim() : ''
-  const ctaText = page.cta_text || site.cta_text || ''
+  const pageCtaText = [page.ctaText, page.cta_text].find((value) => typeof value === 'string' && value.trim())
+  const ctaText = pageCtaText || site.ctaText || site.cta_text || ''
   const redirectLink = page.cta_link || page.redirect_link || site.redirect_link || '/'
   const loginText = page.login_text || site.login_text
   const registerText = page.register_text || site.register_text
@@ -552,6 +579,29 @@ export default function MinimalTemplate({ page, site }: { page: PageData; site: 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isPopupDismissed])
+
+  const faqTitle = page.faqTitle || page.faq_title || site.faqTitle || site.faq_title
+  const pageFaqs = Array.isArray(page.faq) ? page.faq : Array.isArray(page.FAQ) ? page.FAQ : []
+  const siteFaqs = Array.isArray(site.faq) ? site.faq : Array.isArray(site.FAQ) ? site.FAQ : []
+  const faqs: { id?: number; question: string; answer: string }[] = pageFaqs.length > 0 ? pageFaqs : siteFaqs
+
+  useEffect(() => {
+    if (site.faq_schema && faqs.length > 0 && typeof document !== 'undefined') {
+      const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqs.map(({ question, answer }) => ({
+          "@type": "Question", "name": question,
+          "acceptedAnswer": { "@type": "Answer", "text": answer }
+        }))
+      }
+      const script = document.createElement("script")
+      script.type = "application/ld+json"
+      script.text = JSON.stringify(faqSchema)
+      document.head.appendChild(script)
+      return () => { document.head.removeChild(script) }
+    }
+  }, [faqs, site.faq_schema])
 
   const replaceVariables = (content: string): string => {
     if (!content) return content
@@ -574,7 +624,7 @@ export default function MinimalTemplate({ page, site }: { page: PageData; site: 
   const pagePopupText = [page.popupText, page.popup_text].find((value) => typeof value === 'string' && value.trim())
   const sitePopupText = [site.popupText, site.popup_text].find((value) => typeof value === 'string' && value.trim())
   const popupText = pagePopupText || sitePopupText || page.tagline || site.tagline || ''
-  const popupButtonText = page.get_bonus_btn_text || site.get_bonus_btn_text || ctaText
+  const popupButtonText = pageCtaText || page.get_bonus_btn_text || site.get_bonus_btn_text || ctaText
   const footerImagesSource = Array.isArray(page.footer_images) && page.footer_images.length > 0
     ? page.footer_images
     : Array.isArray(page.footerImages) && page.footerImages.length > 0
@@ -734,6 +784,34 @@ export default function MinimalTemplate({ page, site }: { page: PageData; site: 
           <section className="content-section">
             <div className="container">
               <div className="content-wrapper" dangerouslySetInnerHTML={{ __html: processedContent }} />
+            </div>
+          </section>
+        )}
+
+        {faqs.length > 0 && (
+          <section id="faq" className="faq-section">
+            <div className="container">
+              <div className="content-wrapper">
+                {faqTitle && <h2 className="faq-title">{faqTitle}</h2>}
+                <div className="faq-list">
+                  {faqs.map((item, index) => {
+                    const isOpen = openFaqIndex === index
+                    return (
+                      <div key={item.id || index} className="faq-item">
+                        <div className="faq-question" onClick={() => setOpenFaqIndex(isOpen ? null : index)}>
+                          {item.question}
+                          <span className={`faq-toggle-icon ${isOpen ? 'open' : ''}`}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <path d="m6 9 6 6 6-6"></path>
+                            </svg>
+                          </span>
+                        </div>
+                        <div className={`faq-answer ${isOpen ? 'open' : ''}`}>{item.answer}</div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
             </div>
           </section>
         )}

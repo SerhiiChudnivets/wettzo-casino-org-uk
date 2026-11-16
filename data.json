@@ -24,7 +24,7 @@
       "heroSubtitle": "Welcome Bonus",
       "heroBadge": "Wettzo Casino — Register and Play",
       "ctaText": "Play Now",
-      "tagline": "100%  up to £250 + 40 Free Spins",
+      "tagline": "100% up to £250 + 40 Free Spins",
       "heroImage": "/uploads/6a673752346eeb778ea030d2cf8f9d71.webp",
       "template": "homepage",
       "isHomepage": false,
@@ -174,7 +174,7 @@
   "hero_subtitle": "Welcome Bonus",
   "hero_badge": "Wettzo Casino — Register and Play",
   "cta_text": "Play Now",
-  "tagline": "100%  up to £250 + 40 Free Spins",
+  "tagline": "100% up to £250 + 40 Free Spins",
   "features_list": null,
   "footer_text": "© 2026. Wettzo Casino. All rights reserved",
   "popup_text": "Bonus 100% up to £250 + 40 FS",
@@ -367,10 +367,10 @@
       "question": "What is the minimum withdrawal limit at Wettzo Casino?"
     }
   ],
-  "_generated_at": "2026-10-09T11:28:32.531Z",
+  "_generated_at": "2026-11-16T16:56:11.681Z",
   "_version": "1.0.0",
   "html_head_alt": "wettzo baner",
   "content_alt": "wettzo register",
-  "_last_deploy": "2026-10-09T11:28:33.117Z",
-  "_deploy_trigger": "my8x9m"
+  "_last_deploy": "2026-11-16T16:56:12.393Z",
+  "_deploy_trigger": "0g9t6"
 }
